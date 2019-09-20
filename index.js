@@ -13,12 +13,12 @@ const QUIZ = {
     ],
     currentQuestion: 0,
     correctAnswers: 0,
-    incorrectAnswers: 0,
-    totalQuestions: 5
+    incorrectAnswers: 0
 }
 
 
 let question = console.log(QUIZ.questions[0].q)
+let numberOfQuestion = console.log(QUIZ.questions.length)
 let listOfAnswers = console.log(QUIZ.questions[0].answers)
 let correctAnswer1 = console.log(QUIZ.questions[0].correctAnswer)
 let correctAnswer2 = console.log(QUIZ.questions[1].correctAnswer)
