@@ -3,7 +3,7 @@ const QUIZ = {
         {   questionNumber: 1,
             q: 'This is the first question, what is the answer?', 
             answers: ['This is the correct answer', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
-            correctAnswer: 'This is the correct answer'
+            correctAnswer: 'This is the correct answer',
         },
         {   questionNumber: 2,
             q: 'This is the second question, what is the answer?', 
@@ -13,31 +13,102 @@ const QUIZ = {
     ],
     currentQuestion: 0,
     correctAnswers: 0,
-    incorrectAnswers: 0
+    incorrectAnswers: 0,
+    respondedList: []
 }
 
+function getQuestion(questionNumber) {
+    //Get the question object
+    let question = QUIZ.questions.find(q => q.questionNumber === questionNumber);
+    return question;
+}
 
-let question = console.log(QUIZ.questions[0].q)
-let numberOfQuestion = console.log(QUIZ.questions.length)
-let listOfAnswers = console.log(QUIZ.questions[0].answers)
-let correctAnswer1 = console.log(QUIZ.questions[0].correctAnswer)
-let correctAnswer2 = console.log(QUIZ.questions[1].correctAnswer)
-let currentCorrectAnswers = console.log(QUIZ.correctAnswers)
+function getQ(questionNumber) {
+    //Get the question's prompt
+    let prompt = getQuestion(questionNumber).q;
+    return prompt;
+}
 
+function getCorrectAnswer(questionNumber) {
+    //Get question's correct answer string
+    let correctAnswer = getQuestion(questionNumber).correctAnswer;
+    return correctAnswer;
+}
+
+function getQuestionChoices(questionNumber) {
+    //Get a list of choices for a question
+    let choices = [...getQuestion(questionNumber).answers];
+    return choices;
+}
 
 // Start page 
-function renderingIntro(){
-    function generateInroHtml(){};
+function render(){
+    if (QUIZ.currentQuestion === 0) {
+        renderIntro();
+        return;
+    }
+    if (QUIZ.currentQuestion > QUIZ.questions.length) {
+        renderFinalScore();
+        return;
+    }
+    if (QUIZ.respondedList.length > 0){
+        renderScores();
+    }
+    renderQuestion(QUIZ.currentQuestion);
+}
+
+function renderIntro(){
+    const introHtml = generateIntroHtml();
+    $('.quiz-app').html(introHtml);
+    const introButtonClick = function(event){
+        event.preventDefault();
+        QUIZ.currentQuestion += 1;
+        render();
+    }
+    $('.quiz-app').on(click, '.js-button', introButtonClick);
     // should set page to start start quiz, attach event listener to start button. 
 }
 
+function renderQuestion(questionNum){
+//access quiz data model and render the question.
+    const questionHtml = generateQuestionHtml(questionNum);
+    $('.quiz-app').html(questionHtml);
+    const submitButtonClick = function(event){
+        event.preventDefault();
+        //get form data as answer
+        //check if submission is valid
+        renderSubmit(answer);
+    }
+    $('.quiz-form').submit(submitButtonClick);
+}
+
+function renderSubmit(answer){
+    //check if answer matches correct answer
+    // if correct, generate and render Correct HTML
+    // if incorrect generate and render Incorrect HTML
+    //update scores, append to response list
+    $('.quiz-app').html(html) 
+    const nextButtonClick = function(event){
+        QUIZ.currentQuestion += 1
+        //check if submission is valid
+        render();
+    }
+    $('.quiz-app').on('click', '.js-button', nextButtonClick);
+}
+
+function renderScores(){
+    const scoresHtml = generateScoresHtml();
+    $('.scores').html(scoresHtml);
+}
+
+function renderFinalScore(){
+    
+}
 function handleIntroStart(){}
 // should attach event listener. 
 
 
-function renderQuestion(questionnumber){
-//access quiz data model and render the question. 
-}
+
 
 function  handleQuestionSubmit (){}
 // attach event lisenter to submit button 
@@ -60,6 +131,16 @@ function renderWrong(questionnumber){
 function RenderResultsPage(){
 // display total score, display start over, display completed quiz. 
 }
+
+function startApp(){
+    QUIZ.currentQuestion = 0;
+    QUIZ.correctAnswers = 0;
+    QUIZ.incorrectAnswers = 0;
+    QUIZ.respondedList = [];
+    render();
+}
+
+$(startApp);
 
 
 

@@ -14,51 +14,34 @@
         <h2 class="mainheading">Description of quiz</h5>
     </header>
     <main>
-        <div class="js-main-page">
-            <h3 class="pagetitle">Question Page</h3>
-            <h3 class="js-question-number">Question 1</h3>
-            <h3 class="js-score-correct">0 correct</h3>
-            <h3 class="js-score-incorrect">0 incorrect</h3>
-            <div>
-                <form class="js-question-form" data-current-question="1">
-                    <fieldset>
-                        <legend>This is the first question, what is the answer?</legend>
-                        <ul>
-                            <li>
-                                <input type="radio" name="answer" value="This is a choice">
-                                <label for="1">"This is a choice"</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="answer" value="This is the correct answer">
-                                <label for="2">"This is the correct answer"</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="answer" value="This is another choice">
-                                <label for="3">"This is another choice"</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="answer" value="This is another incorrect answer">
-                                <label for="4">"This is another incorrect answer"</label>
-                            </li>
-                        </ul>
-                    </fieldset>
-                    <button class="js-submit-button" type="submit">Submit</button>
-                </form>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div class="scores">
+        </div>
+        <div class="quiz-app">
+            <h3 class="question-number">Question 1</h3>
+            <form class="question-form">
+                <fieldset>
+                    <legend class="question-prompt">This is the first question, what is the answer?</legend>
+                    <ul>
+                        <li class="choice">
+                            <input type="radio" name="answer" value="This is a choice">
+                            <label for="1">"This is a choice"</label>
+                        </li>
+                        <li class="choice">
+                            <input type="radio" name="answer" value="This is the correct answer">
+                            <label for="2">"This is the correct answer"</label>
+                        </li>
+                        <li class="choice">
+                            <input type="radio" name="answer" value="This is another choice">
+                            <label for="3">"This is another choice"</label>
+                        </li>
+                        <li class="choice">
+                            <input type="radio" name="answer" value="This is another incorrect answer">
+                            <label for="4">"This is another incorrect answer"</label>
+                        </li>
+                    </ul>
+                </fieldset>
+                <button class="js-button" type="submit">Submit</button>
+            </form>
         </div>
     </main>
 
