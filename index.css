@@ -1,0 +1,12 @@
+.mainheading {
+    margin-left: 50%;
+    margin-right: 50%;
+}
+
+.js-score-correct {
+    color: green
+}
+
+.js-score-incorrect {
+    color: red
+}
