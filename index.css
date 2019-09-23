@@ -1,3 +1,18 @@
+body {
+    font-family: 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #000000;
+    color: #999;
+}
+
+h1, h2, h3, h4 {
+    color: #fff;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
 .mainheading {
     //
 }
@@ -26,6 +41,13 @@
     //
 }
 
+.quiz-app {
+    width: 100%;
+    height: 93vh;
+    position: relative;
+    background: url('../img/background.jpg') no-repeat center center/cover;
+}
+
 .quiz-form {
     //
 }
@@ -50,8 +72,8 @@ button.choice-button {
     //
 }
 
-form ul {
-    //
+ul {
+    list-style: none;
 }
 
 form label {
