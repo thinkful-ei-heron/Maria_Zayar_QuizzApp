@@ -142,7 +142,7 @@ function renderSubmit(answer){
     }
     renderScores();
     $('.quiz-app').html(html) 
-    $('.quiz-app').on('click', '.js-next-button', function(event){
+    $('.js-next-button').on('click', function(event){
         QUIZ.currentQuestion += 1
         render();
     });
