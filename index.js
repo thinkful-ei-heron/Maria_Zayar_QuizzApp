@@ -11,6 +11,21 @@ const QUIZ = {
             answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
             correctAnswer: 'This is the correct answer for the second question'
         },
+        {   questionNumber: 3,
+            q: 'This is the question, what is the answer?', 
+            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
+            correctAnswer: 'This is the correct answer for the second question'
+        },
+        {   questionNumber: 4,
+            q: 'This is the question, what is the answer?', 
+            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
+            correctAnswer: 'This is the correct answer for the second question'
+        },
+        {   questionNumber: 5,
+            q: 'jaweifaowjefoijawoefjiaweofj?', 
+            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
+            correctAnswer: 'This is the correct answer for the second question'
+        },
     ],
     currentQuestion: 0,
     correctAnswers: 0,
@@ -77,7 +92,7 @@ function renderQuestion(questionNum){
     let questionHtml = generateQuestionHtml(questionNum);
     $('.quiz-app').html(questionHtml);
 
-    $('.js-submit-button').on('click', function(event){
+    $('.quiz-form').submit(function(event){
         event.preventDefault();
         let $answer = $( "input[type=radio][name=answer]:checked" )
         if ($answer.length > 0) {
