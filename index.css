@@ -115,7 +115,37 @@ p {
     position: relative;
 }
 
-.quiz-form {
+.quiz-app h3 {
+
+}
+
+.quiz-app form {
+
+}
+
+.quiz-app fieldset {
+
+}
+
+.quiz-app h4 {
+
+}
+
+.quiz-app ul {
+    list-style: none;
+}
+
+.quiz-app ul li {
+
+}
+
+.quiz-app input {}
+
+.quiz-app label {}
+
+
+/* ////////////////////////////// */
+/* .quiz-form {
 }
 
 .scores {
@@ -139,13 +169,8 @@ p {
 }
 
 .js-input {
-}
+} */
 
-
-
-ul {
-    list-style: none;
-}
 
 @media (max-width: 960px) {
 }
