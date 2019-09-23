@@ -176,13 +176,13 @@ function generateQuestionHtml(currentQuestion=QUIZ.currentQuestion){
 }
 
 function generateCorrectHtml(correctAnswer=getCorrectAnswer(QUIZ.currentQuestion)){
-    return `<p><quote>${correctAnswer}</quote> is right!!</p>
+    return `<p class="correct"><quote class="correct">${correctAnswer}</quote> is right!!</p>
             <button class="js-next-button btn btn-xl">Next <i class="fas fa-chevron-right btn-icon"></i></button>`
 }
 
 function generateIncorrectHtml(wrongAnswer){
-    return `<p><quote>${wrongAnswer}</quote> is wrong!</p>
-            <p>Correct answer is <quote>${getCorrectAnswer()}</quote></p>
+    return `<p class="incorrect"><quote class="incorrect">${wrongAnswer}</quote> is wrong!</p>
+            <p class="correct">Correct answer is <quote class="correct">${getCorrectAnswer()}</quote></p>
             <button class="js-next-button btn btn-xl">Next <i class="fas fa-chevron-right btn-icon"></i></button>`
 }
 
