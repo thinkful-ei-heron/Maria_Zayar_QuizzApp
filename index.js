@@ -2,31 +2,36 @@ const QUIZ = {
         description: "This is a sample description of this particular quiz.",
         questions: [
         {   questionNumber: 1,
-            imgsrc: `<img src="kona-coffee-berries-slider1-min.jpg" alt="photograph of coffee beans hanging from tree."></img>`,
+            imgsrc: "img/kona-coffee-berries-slider1-min.jpg", 
+            alt: "photograph of coffee beans hanging from tree.",
             q: 'Which of these states is the only state in the US where coffee beans can be grown.', 
             answers: ['Hawaii', 'Florida', 'Washington', 'Indiana'],
             correctAnswer: 'Hawaii',
         },
         {   questionNumber: 2,
-            imgsrc: `<img src="Blue-Lagoon.jpg" alt="photograph of blue lagoon with mountain lanscape."></img>`,
+            imgsrc: "img/Blue-Lagoon.jpg",
+            alt: "photograph of blue lagoon with mountain lanscape.",
             q: 'Which country was the last place on earth to be settled by humans?', 
             answers: ['Russia', 'Alaska', 'Chile', 'Iceland'],
             correctAnswer: 'Iceland'
         },
         {   questionNumber: 3,
-            imgsrc: `<img src="1084px-The_Great_Wall_of_China_at_Jinshanling.jpg" alt="photograph of Great Wall of China"></img>`,
+            imgsrc: "img/1084px-The_Great_Wall_of_China_at_Jinshanling.jpg", 
+            alt: "photograph of Great Wall of China",
             q: 'How many people died building the Great Wall of China?', 
             answers: ['500 deaths', 'no one died', '1,560 deaths', 'one million deaths'],
             correctAnswer: 'one million deaths'
         },
         {   questionNumber: 4,
-            imgsrc: `<img src="Chernobyl photos - cafe-4K.jpg" alt="picture of abonded building with stained glass window in Chernobyl, Ukraine"></img>`,
+            imgsrc: "img/chernobyl.jpg", 
+            alt: "picture of abonded building with stained glass window in Chernobyl, Ukraine",
             q: 'how much longer will the Chernobyl exclusion zone remain uninhabitable?', 
             answers: ['Effort to decontaminate are already in effect and area will become habitable by 2023.', 'never', 'It will remain uninhabitable for another 20,000 years.', 'I really don/t know.'],
             correctAnswer: 'It will remain uninhabitable for another 20,000 years.'
         },
         {   questionNumber: 5,
-            imgsrc: `<img src="Moscows-Red-Square.jpg" alt="Picture of castle like building with varied colors."></img>`,
+            imgsrc: "img/Moscows-Red-Square.jpg",
+            alt: "Picture of castle like building with varied colors.",
             q: 'In what country would we find this building structure ?', 
             answers: ['Belgium', 'Prague', 'Russia', 'France'],
             correctAnswer: 'Russia'
@@ -43,6 +48,12 @@ function getQuestion(questionNumber=QUIZ.currentQuestion) {
     //Get the question object
     let question = QUIZ.questions.find(q => q.questionNumber === questionNumber);
     return question;
+}
+
+function getImgSrc(questionNum=QUIZ.currentQuestion) {
+    //get image src
+    let src = getQuestion(questionNum).imgsrc;
+    return src;
 }
 
 function getQ(questionNumber=QUIZ.currentQuestion) {
@@ -96,6 +107,7 @@ function renderQuestion(questionNum){
 //access quiz data model and render the question.
     let questionHtml = generateQuestionHtml(questionNum);
     $('.quiz-app').html(questionHtml);
+    $('.showcase').css('background', `url(${getImgSrc(questionNum)})`)
 
     $('.quiz-form').submit(function(event){
         event.preventDefault();
