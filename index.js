@@ -16,7 +16,7 @@ const QUIZ = {
             correctAnswer: 'Iceland'
         },
         {   questionNumber: 3,
-            imgsrc: "img/1084px-The_Great_Wall_of_China_at_Jinshanling.jpg", 
+            imgsrc: "img/china.jpg", 
             alt: "photograph of Great Wall of China",
             q: 'How many people died building the Great Wall of China?', 
             answers: ['500 deaths', 'no one died', '1,560 deaths', 'one million deaths'],
@@ -107,7 +107,7 @@ function renderQuestion(questionNum){
 //access quiz data model and render the question.
     let questionHtml = generateQuestionHtml(questionNum);
     $('.quiz-app').html(questionHtml);
-    $('.showcase').css('background', `url(${getImgSrc(questionNum)})`)
+    $('.showcase').css('background', `url(${getImgSrc(questionNum)}) no-repeat center center/cover`)
 
     $('.quiz-form').submit(function(event){
         event.preventDefault();
