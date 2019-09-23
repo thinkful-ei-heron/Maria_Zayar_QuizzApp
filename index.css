@@ -1,3 +1,7 @@
+:root {
+    --primary-color: #0982e5;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -13,12 +17,111 @@ p {
     margin: 0.5rem 0;
 }
 
-.mainheading {
-    //
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    outline: none;
+    box-shadow: 0 1px 0 rgba(0,0,0, 0.45);
+    border-radius: 2px;
+    transition: opacity 0.2s ease-in;
+}
+
+.btn:hover {
+    opacity: 0.75;
+}
+
+.btn-rounded {
+    border-radius: 5px;
+}
+
+.btn-xl {
+    font-size: 2rem;
+}
+
+
+.showcase {
+    width: 100%;
+    height: 93vh;
+    position: relative;
+    background: url('../img/background.jpg') no-repeat center center/cover;
+}
+
+.showcase-top {
+	position: relative;
+	z-index: 2;
+	height: 90px;
+}
+
+.showcase-top h1 {
+	width: 167px;
+	position: relative;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    margin-left: 0;
+    color: var(--primary-color)
+}
+
+.showcase-top p {
+	transform: translate(-50%, -50%);
+    color: var(--primary-color)
+}
+
+
+
+
+.showcase-content {
+	position: relative;
+	z-index: 2;
+	width: 65%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-top: 9rem;
+}
+
+.showcase-content p {
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 400;
+	font-size: 1.9rem;
+	line-height: 1.25;
+	margin: 0 0 2rem;
+}
+
+.showcase-content h1 {
+	font-weight: 700;
+	font-size: 5.2rem;
+	line-height: 1.1;
+	margin: 0 0 2rem;
+}
+
+
+
+.quiz-app {
+    width: 100%;
+    height: 93vh;
+    position: relative;
+}
+
+.quiz-form {
+}
+
+.scores {
 }
 
 .js-description {
-    //
 }
 
 .js-score-correct {
@@ -30,52 +133,19 @@ p {
 }
 
 .js-submit-button {
-    //
 }
 
 .js-start-button {
-    //
 }
 
 .js-input {
-    //
 }
 
-.quiz-app {
-    width: 100%;
-    height: 93vh;
-    position: relative;
-    background: url('../img/background.jpg') no-repeat center center/cover;
-}
 
-.quiz-form {
-    //
-}
-
-.scores {
-    //
-}
-
-em {
-    //
-}
-
-.question-prompt {
-    //
-}
-
-li.choice {
-    
-}
-
-button.choice-button {
-    //
-}
 
 ul {
     list-style: none;
 }
 
-form label {
-    //
+@media (max-width: 960px) {
 }

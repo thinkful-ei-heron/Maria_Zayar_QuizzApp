@@ -81,7 +81,7 @@ function render(){
 
 function renderIntro(){
     let introHtml = generateIntroHtml();
-    $('.js-description').text(QUIZ.description)
+   // $('.js-description').text(QUIZ.description)
     $('.quiz-app').html(introHtml);
 
     $('.quiz-app').on('click', '.js-start-button', function(event){
@@ -148,7 +148,7 @@ function renderFinalScore(){
 
 function generateIntroHtml(){
     return `<h1>Welcome to the quiz. Press Start to begin.</h1>
-            <button class="js-start-button">Start</button>`
+            <button class="js-start-button btn btn-xl">Start <i class="fas fa-chevron-right btn-icon"></i></button>`
 }
 
 function generateQuestionHtml(currentQuestion=QUIZ.currentQuestion){
@@ -169,7 +169,7 @@ function generateQuestionHtml(currentQuestion=QUIZ.currentQuestion){
                 ${items}
             </ul>
         </fieldset>
-        <button class="js-submit-button" type="submit">Submit</button>`
+        <button class="js-submit-button btn btn-xl" type="submit">Submit</button>`
         
     return html;
     
@@ -177,13 +177,13 @@ function generateQuestionHtml(currentQuestion=QUIZ.currentQuestion){
 
 function generateCorrectHtml(correctAnswer=getCorrectAnswer(QUIZ.currentQuestion)){
     return `<p><quote>${correctAnswer}</quote> is right!!</p>
-            <button class="js-next-button">Next</button>`
+            <button class="js-next-button btn btn-xl">Next <i class="fas fa-chevron-right btn-icon"></i></button>`
 }
 
 function generateIncorrectHtml(wrongAnswer){
     return `<p><quote>${wrongAnswer}</quote> is wrong!</p>
             <p>Correct answer is <quote>${getCorrectAnswer()}</quote></p>
-            <button class="js-next-button">Next</button>`
+            <button class="js-next-button btn btn-xl">Next <i class="fas fa-chevron-right btn-icon"></i></button>`
 }
 
 function generateScoresHtml(numCorrect=QUIZ.correctAnswers, numIncorrect=QUIZ.incorrectAnswers, responses=QUIZ.respondedList){
