@@ -80,12 +80,12 @@ function render(){
         renderIntro();
         return;
     }
-    if (QUIZ.respondedList.length > 0){
-        renderScores();
-    }
     if (QUIZ.currentQuestion > QUIZ.questions.length) {
         renderFinalScore();
         return;
+    }
+    if (QUIZ.respondedList.length > 0){
+        renderScores();
     }
     renderQuestion(QUIZ.currentQuestion);
 }
@@ -95,7 +95,7 @@ function renderIntro(){
    // $('.js-description').text(QUIZ.description)
     $('.quiz-app').html(introHtml);
 
-    $('.quiz-app').on('click', '.js-start-button', function(event){
+    $('.js-start-button').on('click', function(event){
         event.preventDefault();
         QUIZ.currentQuestion += 1;
         render();
@@ -156,8 +156,12 @@ function renderScores(){
 function renderFinalScore(){
     let finalScore = generateFinalScoreHtml();
     $('.quiz-app').html(finalScore);
-    $('.js-startover-button').on('click', function(event){
-        event.preventDefault();
+    $('.js-startover-button').on('click', function(event) {
+        $('.scores').html('');
+        QUIZ.currentQuestion = 0;
+        QUIZ.correctAnswers = 0;
+        QUIZ.incorrectAnswers = 0;
+        QUIZ.respondedList = [];
         render();
     });
 }
@@ -183,7 +187,7 @@ function generateQuestionHtml(currentQuestion=QUIZ.currentQuestion){
     items = items.join('');
     
     let html =
-        `<h3 class="question-number">Question ${currentQuestion}</h3>
+        `<h3 class="question-number">Question ${currentQuestion} of ${QUIZ.questions.length}</h3>
         <form class="quiz-form">
         <fieldset>
             <h4 class="question-prompt">${getQ()}</h4>
@@ -213,12 +217,6 @@ function generateScoresHtml(numCorrect=QUIZ.correctAnswers, numIncorrect=QUIZ.in
             <b class="js-score-correct">${numCorrect}</b>
             <b class="js-score-incorrect">${numIncorrect}</b>`
 }
-
-function generateFinalScoreHtml(numCorrect=QUIZ.correctAnswers, numIncorrect=QUIZ.incorrectAnswers, responses=QUIZ.respondedList){
-    //
-}
-
-
 
 function startApp(){
     QUIZ.currentQuestion = 0;
