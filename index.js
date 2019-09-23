@@ -2,34 +2,34 @@ const QUIZ = {
         description: "This is a sample description of this particular quiz.",
         questions: [
         {   questionNumber: 1,
-            imgsrc: null,
-            q: 'This is the only state in the US where coffee can be grown', 
-            answers: ['Hawaii', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
-            correctAnswer: 'This is the correct answer',
+            imgsrc: `<img src="kona-coffee-berries-slider1-min.jpg" alt="photograph of coffee beans hanging from tree."></img>`,
+            q: 'Which of these states is the only state in the US where coffee beans can be grown.', 
+            answers: ['Hawaii', 'Florida', 'Washington', 'Indiana'],
+            correctAnswer: 'Hawaii',
         },
         {   questionNumber: 2,
-            imgsrc: null,
-            q: 'Iceland was one of the last places on earth to be settled by humans?', 
-            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
-            correctAnswer: 'This is the correct answer for the second question'
+            imgsrc: `<img src="Blue-Lagoon.jpg" alt="photograph of blue lagoon with mountain lanscape."></img>`,
+            q: 'Which country was the last place on earth to be settled by humans?', 
+            answers: ['Russia', 'Alaska', 'Chile', 'Iceland'],
+            correctAnswer: 'Iceland'
         },
         {   questionNumber: 3,
-            imgsrc: null,
+            imgsrc: `<img src="1084px-The_Great_Wall_of_China_at_Jinshanling.jpg" alt="photograph of Great Wall of China"></img>`,
             q: 'How many people died building the Great Wall of China?', 
-            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
-            correctAnswer: 'This is the correct answer for the second question'
+            answers: ['500 deaths', 'no one died', '1,560 deaths', 'one million deaths'],
+            correctAnswer: 'one million deaths'
         },
         {   questionNumber: 4,
-            imgsrc: null,
-            q: 'Chernobyl fact?', 
-            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
-            correctAnswer: 'This is the correct answer for the second question'
+            imgsrc: `<img src="Chernobyl photos - cafe-4K.jpg" alt="picture of abonded building with stained glass window in Chernobyl, Ukraine"></img>`,
+            q: 'how much longer will the Chernobyl exclusion zone remain uninhabitable?', 
+            answers: ['Effort to decontaminate are already in effect and area will become habitable by 2023.', 'never', 'It will remain uninhabitable for another 20,000 years.', 'I really don/t know.'],
+            correctAnswer: 'It will remain uninhabitable for another 20,000 years.'
         },
         {   questionNumber: 5,
-            imgsrc: null,
-            q: 'jaweifaowjefoijawoefjiaweofj?', 
-            answers: ['This is the correct answer for the second question', 'This is a choice', 'This is another choice', 'This is another incorrect answer'],
-            correctAnswer: 'This is the correct answer for the second question'
+            imgsrc: `<img src="Moscows-Red-Square.jpg" alt="Picture of castle like building with varied colors."></img>`,
+            q: 'In what country would we find this building structure ?', 
+            answers: ['Belgium', 'Prague', 'Russia', 'France'],
+            correctAnswer: 'Russia'
         },
     ],
     currentQuestion: 0,
