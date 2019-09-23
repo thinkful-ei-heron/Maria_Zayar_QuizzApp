@@ -1,6 +1,9 @@
 .mainheading {
-    margin-left: 50%;
-    margin-right: 50%;
+    //
+}
+
+.js-description {
+    //
 }
 
 .js-score-correct {
@@ -9,4 +12,48 @@
 
 .js-score-incorrect {
     color: red
+}
+
+.js-submit-button {
+    //
+}
+
+.js-start-button {
+    //
+}
+
+.js-input {
+    //
+}
+
+.quiz-form {
+    //
+}
+
+.scores {
+    //
+}
+
+em {
+    //
+}
+
+.question-prompt {
+    //
+}
+
+li.choice {
+    
+}
+
+button.choice-button {
+    //
+}
+
+form ul {
+    //
+}
+
+form label {
+    //
 }

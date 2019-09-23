@@ -1,4 +1,5 @@
 const QUIZ = {
+        description: "This is a sample description of this particular quiz.",
         questions: [
         {   questionNumber: 1,
             q: 'This is the first question, what is the answer?', 
@@ -17,31 +18,32 @@ const QUIZ = {
     respondedList: []
 }
 
-function getQuestion(questionNumber) {
+//QUIZ object helper functions
+function getQuestion(questionNumber=QUIZ.currentQuestion) {
     //Get the question object
     let question = QUIZ.questions.find(q => q.questionNumber === questionNumber);
     return question;
 }
 
-function getQ(questionNumber) {
+function getQ(questionNumber=QUIZ.currentQuestion) {
     //Get the question's prompt
     let prompt = getQuestion(questionNumber).q;
     return prompt;
 }
 
-function getCorrectAnswer(questionNumber) {
+function getCorrectAnswer(questionNumber=QUIZ.currentQuestion) {
     //Get question's correct answer string
     let correctAnswer = getQuestion(questionNumber).correctAnswer;
     return correctAnswer;
 }
 
-function getQuestionChoices(questionNumber) {
+function getQuestionChoices(questionNumber=QUIZ.currentQuestion) {
     //Get a list of choices for a question
     let choices = [...getQuestion(questionNumber).answers];
     return choices;
 }
 
-// Start page 
+// Render functions handle DOM rendering, and events based on quiz object state.
 function render(){
     if (QUIZ.currentQuestion === 0) {
         renderIntro();
@@ -58,79 +60,123 @@ function render(){
 }
 
 function renderIntro(){
-    const introHtml = generateIntroHtml();
+    let introHtml = generateIntroHtml();
+    $('.js-description').text(QUIZ.description)
     $('.quiz-app').html(introHtml);
-    const introButtonClick = function(event){
+
+    $('.quiz-app').on('click', '.js-start-button', function(event){
         event.preventDefault();
         QUIZ.currentQuestion += 1;
         render();
-    }
-    $('.quiz-app').on(click, '.js-button', introButtonClick);
+    });
     // should set page to start start quiz, attach event listener to start button. 
 }
 
 function renderQuestion(questionNum){
 //access quiz data model and render the question.
-    const questionHtml = generateQuestionHtml(questionNum);
+    let questionHtml = generateQuestionHtml(questionNum);
     $('.quiz-app').html(questionHtml);
-    const submitButtonClick = function(event){
+
+    $('.js-submit-button').on('click', function(event){
         event.preventDefault();
-        //get form data as answer
-        //check if submission is valid
-        renderSubmit(answer);
-    }
-    $('.quiz-form').submit(submitButtonClick);
+        let $answer = $( "input[type=radio][name=answer]:checked" )
+        if ($answer.length > 0) {
+            let answer = $answer.val();
+            renderSubmit(answer);
+        } else {
+            ($('em').length === 0)? $(".quiz-form").append("<em>Select an answer!</em>"): null
+            //alert('Must select an answer');
+        }
+    });
+    $('.quiz-app').on('click', '.js-input', (event) => {
+       $('em').hide(); 
+    });
 }
 
 function renderSubmit(answer){
-    //check if answer matches correct answer
-    // if correct, generate and render Correct HTML
-    // if incorrect generate and render Incorrect HTML
-    //update scores, append to response list
-    $('.quiz-app').html(html) 
-    const nextButtonClick = function(event){
-        QUIZ.currentQuestion += 1
-        //check if submission is valid
-        render();
+    let html;
+    if (answer === getCorrectAnswer(QUIZ.currentQuestion)) {
+        console.log('correct');
+        QUIZ.respondedList.push([QUIZ.currentQuestion, 'Correct!']);
+        QUIZ.correctAnswers += 1
+        html = generateCorrectHtml();
+
+    } else {
+        console.log('wrong');
+        QUIZ.respondedList.push([QUIZ.currentQuestion, 'Wrong!', answer]);
+        QUIZ.incorrectAnswers += 1
+        html = generateIncorrectHtml(answer);
+
     }
-    $('.quiz-app').on('click', '.js-button', nextButtonClick);
+    renderScores();
+    $('.quiz-app').html(html) 
+    $('.quiz-app').on('click', '.js-next-button', function(event){
+        QUIZ.currentQuestion += 1
+        render();
+    });
 }
 
 function renderScores(){
-    const scoresHtml = generateScoresHtml();
+    let scoresHtml = generateScoresHtml();
     $('.scores').html(scoresHtml);
 }
 
 function renderFinalScore(){
     
 }
-function handleIntroStart(){}
-// should attach event listener. 
 
 
-
-
-function  handleQuestionSubmit (){}
-// attach event lisenter to submit button 
-
-//** logic for when no answer is chosen, submit button renders an alert that answer 
-// is required. 
-
-function compareUserAnswer(questionnumber, useranswer) {}
-//compare user answer to correct answer and add to score to reflect change.  
-//Also, set question number bar to what the question it should on. 
-
-function renderCorrect(questionnumber){
-// render the html that displays correct, move on to next question. 
+function generateIntroHtml(){
+    return `<h1>Welcome to the quiz. Press Start to begin.</h1>
+            <button class="js-start-button">Start</button>`
 }
 
-function renderWrong(questionnumber){
-    //should render wrong, and display correct answer, write function to access correct answer. 
+function generateQuestionHtml(currentQuestion=QUIZ.currentQuestion){
+    let items = getQuestionChoices().map((choice, index) => {
+        return `<li class="choice">
+                    <input class="js-input" id="${index+1}" type="radio" name="answer" value="${choice}"></input>
+                    <label for="${index+1}">${choice}</label>
+                </li>`
+    });
+    items = items.join('');
+    
+    let html =
+        `<h3 class="question-number">Question ${currentQuestion}</h3>
+        <form class="quiz-form">
+        <fieldset>
+            <h4 class="question-prompt">${getQ()}</h4>
+            <ul>
+                ${items}
+            </ul>
+        </fieldset>
+        <button class="js-submit-button" type="submit">Submit</button>`
+        
+    return html;
+    
 }
 
-function RenderResultsPage(){
-// display total score, display start over, display completed quiz. 
+function generateCorrectHtml(correctAnswer=getCorrectAnswer(QUIZ.currentQuestion)){
+    return `<p><quote>${correctAnswer}</quote> is right!!</p>
+            <button class="js-next-button">Next</button>`
 }
+
+function generateIncorrectHtml(wrongAnswer){
+    return `<p><quote>${wrongAnswer}</quote> is wrong!</p>
+            <p>Correct answer is <quote>${getCorrectAnswer()}</quote></p>
+            <button class="js-next-button">Next</button>`
+}
+
+function generateScoresHtml(numCorrect=QUIZ.correctAnswers, numIncorrect=QUIZ.incorrectAnswers, responses=QUIZ.respondedList){
+    return `<h3>Scores</h3>
+            <b class="js-score-correct">${numCorrect}</b>
+            <b class="js-score-incorrect">${numIncorrect}</b>`
+}
+
+function generateFinalScoreHtml(numCorrect=QUIZ.correctAnswers, numIncorrect=QUIZ.incorrectAnswers, responses=QUIZ.respondedList){
+    //
+}
+
+
 
 function startApp(){
     QUIZ.currentQuestion = 0;
