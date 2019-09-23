@@ -80,12 +80,12 @@ function render(){
         renderIntro();
         return;
     }
+    if (QUIZ.respondedList.length > 0){
+        renderScores();
+    }
     if (QUIZ.currentQuestion > QUIZ.questions.length) {
         renderFinalScore();
         return;
-    }
-    if (QUIZ.respondedList.length > 0){
-        renderScores();
     }
     renderQuestion(QUIZ.currentQuestion);
 }
@@ -154,7 +154,17 @@ function renderScores(){
 }
 
 function renderFinalScore(){
-    
+    let finalScore = generateFinalScoreHtml();
+    $('.quiz-app').html(finalScore);
+    $('.js-startover-button').on('click', function(event){
+        event.preventDefault();
+        render();
+    });
+}
+
+function generateFinalScoreHtml(){
+    return `<h1>You got ${QUIZ.correctAnswers} questions right out of ${QUIZ.questions.length}</h1>
+            <button class="js-startover-button btn btn-xl">Start Over <i class="fas fa-chevron-left btn-icon"></i></button>`
 }
 
 
