@@ -26,7 +26,7 @@ const QUIZ = {
             imgsrc: "img/chernobyl.jpg", 
             alt: "picture of abonded building with stained glass window in Chernobyl, Ukraine",
             q: 'how much longer will the Chernobyl exclusion zone remain uninhabitable?', 
-            answers: ['Effort to decontaminate are already in effect and area will become habitable by 2023.', 'never', 'It will remain uninhabitable for another 20,000 years.', 'I really don/t know.'],
+            answers: ['Effort to decontaminate are already in effect and area will become habitable by 2023.', 'never', 'It will remain uninhabitable for another 20,000 years.', 'I do not know'],
             correctAnswer: 'It will remain uninhabitable for another 20,000 years.'
         },
         {   questionNumber: 5,

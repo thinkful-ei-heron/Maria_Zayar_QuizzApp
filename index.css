@@ -3,19 +3,30 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Nunito', sans-serif;
     -webkit-font-smoothing: antialiased;
     background: #000000;
-    color: #999;
+    color: white;
+    
+}
+main {
+    box-shadow: inset 0 0 0 1000px rgba(44, 135, 130, 0.75)
 }
 
 h1, h2, h3, h4 {
     color: #fff;
+    font-size: 15px;
 }
 
 p {
     margin: 0.5rem 0;
 }
+
+fieldset {
+    text-align: left;
+
+}
+
 
 /* Buttons */
 .btn {
@@ -48,9 +59,15 @@ p {
 /*///////////////////////////////////////////////*/
 
 .showcase {
-    width: 100%;
-    height: 93vh;
-    position: relative;
+    width: 90%;
+    height: 500px;
+    background:linear-gradient(#e66465, #9198e5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin:0px auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .showcase-top {
@@ -58,15 +75,17 @@ p {
 	z-index: 2;
 	height: 90px;
 }
-
-.showcase-top h1 {
-	width: 167px;
+/*  Quiz App text  */
+.showcase-top h1 {  
+	width: 300px;
 	position: relative;
 	top: 25%;
 	left: 50%;
 	transform: translate(-50%, -50%);
     margin-left: 0;
-    color: var(--primary-color)
+    color: white;
+    font-size: 50px;
+    
 }
 
 .showcase-top p {
@@ -109,6 +128,7 @@ p {
     width: 100%;
     height: 93vh;
     position: relative;
+    font: 15px;
 }
 
 .quiz-app h3 {
@@ -133,6 +153,7 @@ p {
 
 .quiz-app ul li {
 
+
 }
 
 .quiz-app input {}
@@ -141,40 +162,98 @@ p {
 
 
 /* /////////////////////////////////////// */
-.correct p, .correct quote {
+.correct{
+    font-size: 15px;
+    margin-top: 90px;
+    font-weight: bold;
+}
+}
+
+.incorrect{
+    font-size: 15px;
+    margin-top: 50px;
+    font-weight: bold;
+}
+h1{
+    margin-top: 40px;
 
 }
 
-.incorrect p, .incorrect quote {
-
+quote.correct{ /* not sure if q or quote is an element*/
+    margin-top: 3
 }
+p.incorrect{
+    font-size: 15px;
+    font-weight: bold;
+}
+p.correct{
+    margin-top:20px;
+}
+p {
+    margin-top: 40px;
+}
+label {
+    font-weight: bold;
+}
+
+
+    /*background:  rgba(44, 135, 130, 0.6);  /*
+}
+
+fieldset {
+    /*background: rgba(44, 135, 130, 0.6); */
+}
+
 
 .quiz-form {
 }
 
 .scores {
-    height: 50px;
+    height: 20px;
 }
 
 .js-description {
 }
 
 .js-score-correct {
-    color: green
+    color: greenyellow;
+    padding: 2px;
+    display: flex;
+    margin-right: 20px;
+    justify-content: center;
+    position: relative;
+    top: -20px;
+    left:2px;
+
 }
 
 .js-score-incorrect {
-    color: red
+    color:rgb(238, 0, 0);
+    padding: 2px;
+    display: flex;
+    margin-right: 20px;
+    justify-content: center;
+    position: relative;
+    top: -42px;
+    left: 21px;
 }
 
 .js-submit-button {
+    font-size: 15px;
 }
 
 .js-start-button {
+    font-size: 15px;
+}
+
+button.js-next-button {
+    font-size: 15px;
 }
 
 .js-input {
+
 }
+
 
 
 @media (max-width: 960px) {
