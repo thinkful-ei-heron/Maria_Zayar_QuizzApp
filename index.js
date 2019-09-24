@@ -214,8 +214,8 @@ function generateIncorrectHtml(wrongAnswer){
 
 function generateScoresHtml(numCorrect=QUIZ.correctAnswers, numIncorrect=QUIZ.incorrectAnswers, responses=QUIZ.respondedList){
     return `<h3>Scores</h3>
-            <b class="js-score-correct">${numCorrect}</b>
-            <b class="js-score-incorrect">${numIncorrect}</b>`
+           <div> <b class="js-score-correct">${numCorrect}</b>
+            <b class="js-score-incorrect">${numIncorrect}</b> </div>`
 }
 
 function startApp(){
